@@ -1,0 +1,7 @@
+<h1>Shipping Price</h1>
+<!-- 利用 async 管道修改配送组件的模板,async 管道从数据流中返回最新值，并在所属组件的生命期内持续返回。当 Angular 销毁该组件时，async 管道会自动停止。 -->
+<!-- https://angular.cn/api/common/AsyncPipe -->
+<!-- Update the ShippingComponent template to display the shipping types and prices using the async pipe. -->
+<div *ngFor="let cost of shippingCost | async">
+  {{ cost.type }}:{{ cost.price | currency }}
+</div>

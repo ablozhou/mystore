@@ -1,0 +1,19 @@
+<h2>Products!</h2>
+<!-- ngFor表示循环 -->
+<div *ngFor="let p of products">
+  <h3>
+    <!-- [title] 为<a></a>自带属性，加[]表示按angular解释属性,双引号可以按脚本解释, [routerLink]为activeRouteLink引入a的属性 -->
+    <a [title]="p.name + ' details'" [routerLink]="['/products', p.id]">
+      {{ p.name }}
+    </a>
+  </h3>
+  <!-- ngIf 如果不满足，则该组件不渲染 -->
+  <div *ngIf="p.description">description: {{ p.description }}</div>
+  <!-- 要绑定到事件，请使用 Angular 的事件绑定语法。此语法由等号左侧括号内的目标事件名和右侧引号内的模板语句组成。
+    在下面的示例中，目标事件名是 click ，模板语句是 share(p)。 -->
+  <button (click)="share(p)">Share</button>
+
+  <!-- 父组件接受事件，自定义事件notify:EventEmitter, 绑定的处理函数为onNofity(x) -->
+  <!-- [product]为自定义属性，绑定变量对象为p，即上面ngFor生成的变量，用于传到子组件中 -->
+  <app-product-alert [product]="p" (notify)="onNotify(p)"></app-product-alert>
+</div>

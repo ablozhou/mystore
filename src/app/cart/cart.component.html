@@ -1,0 +1,19 @@
+<h3>Cart</h3>
+<a routerLink="/shipping">Shipping price</a>
+<div class="cart" *ngFor="let i of items">
+  <span>item name: {{ i.name }}. </span>
+  <span>item price: {{ i.price | currency }}</span>
+</div>
+<!-- Can't bind to 'formGroup' since it isn't a known property of 'form', must import ReactiveFormsModule -->
+<form [formGroup]="formCheckOut" (ngSubmit)="onSubmit()">
+  <label for="name" class="control-label">Name</label>
+  <input id="name" type="text" placeholder="your name" formControlName="name" />
+  <label for="address">Address</label>
+  <input
+    id="address"
+    type="text"
+    placeholder="your address"
+    formControlName="address"
+  />
+  <button type="submit">perchase</button>
+</form>
